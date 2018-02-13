@@ -1,0 +1,5 @@
+<%= form_for @saying do |form| %>
+  <%= form.text_area :words %>
+  <%= form.select :voice, options_for_select(all_voices.map{|voice| [voice, voice]}) %>
+  <%= form.submit %>
+<% end %>
