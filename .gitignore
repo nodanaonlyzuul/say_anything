@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
+/public/sayings/*.mp3
 /public/sayings/*.aiff
 # Ignore all logfiles and tempfiles.
 /log/*
