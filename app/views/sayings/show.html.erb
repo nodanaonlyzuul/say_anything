@@ -1,8 +1,9 @@
-<div class="words">
-  <%= simple_format @saying.words %>
+<div class="row">
+  <div class="col-sm">
+    <%= simple_format @saying.words %>
+    <a id="playAgainLink" href="#playAgain">Play Again</a>
+  </div>
 </div>
-
-<a id="playAgainLink" href="#playAgain">Play Again</a>
 
 <script type="text/javascript">
   $(function(){
