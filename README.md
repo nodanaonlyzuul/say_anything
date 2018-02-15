@@ -1,24 +1,9 @@
-# README
+# Say Anything
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An excuse to Dockerize a simple text-to-speech web site.
 
-Things you may want to cover:
+## Building & Running Locally as a Docker Image
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1.  `cp ./config/.env.example ./config/.env` and fill in values
+1.  `docker build .`
+1.  `docker run --env-file ./docker_resources/.env -p 80:80 [IMAGE]`
