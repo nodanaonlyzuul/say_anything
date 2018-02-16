@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
   $(function(){
-    var mySound = new buzz.sound("/sayings/<%= filename_for(@saying).gsub('aiff', 'mp3') %>");
+    var mySound = new buzz.sound("/sayings/<%= filename_for(@saying).gsub('wav', 'mp3') %>");
     mySound.play();
 
     $('#playAgainLink').click(function (e) {

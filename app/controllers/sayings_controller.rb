@@ -10,7 +10,7 @@ class SayingsController < ApplicationController
   def create
     @saying = Saying.new(saying_params)
     if @saying.valid?
-      redirect_to saying_path(@saying.voice, {words: @saying.words})
+      redirect_to saying_path(1, {words: @saying.words})
     else
       # TODO: amusing error page
     end
@@ -18,13 +18,13 @@ class SayingsController < ApplicationController
 
   def show
     @saying = Saying.new()
-    @saying.voice = params[:id]
     @saying.words = params[:words]
 
+    # Example usage: pico2wave -w=hello.wav "Hello my love, I heard a kiss from you"
     if @saying.valid?
       path = File.join(Rails.root, 'public', 'sayings', filename_for(@saying))
-      system(voice_command, '-v', @saying.voice, @saying.words, '-o', path)
-        system('ffmpeg', '-y', '-i', path, path.gsub('aiff', 'mp3'))
+      system('pico2wave', "-w=#{path}", @saying.words)
+      system('ffmpeg', '-y', '-i', path, path.gsub('wav', 'mp3'))
     else
     end
   end
@@ -36,6 +36,6 @@ class SayingsController < ApplicationController
   end
 
   def filename_for(saying)
-    "#{@saying.voice}_#{Digest::SHA1.hexdigest(@saying.words)}.aiff"
+    "#{Digest::SHA1.hexdigest(@saying.words)}.wav"
   end
 end
