@@ -3,10 +3,9 @@ class Saying
   include ActiveModel::Validations
   include ActiveModel::Conversion
 
-  attr_accessor :words, :voice
+  attr_accessor :words
 
   validates :words, presence: true
-  validates :voice, presence: true
 
   def id
     nil

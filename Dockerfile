@@ -2,6 +2,7 @@ FROM 'phusion/passenger-ruby24'
 
 # Set correct environment variables.
 ENV HOME /root
+ENV RAILS_ENV production
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
@@ -28,7 +29,7 @@ ADD ./docker_resources/application_environment_variables.conf /etc/nginx/main.d/
 # Move in app and set permissions
 RUN mkdir /home/app/say_anything
 ADD . /home/app/say_anything
-RUN cd /home/app/say_anything && bundle install --without test development
+RUN cd /home/app/say_anything && bundle install --without test development && rake assets:precompile
 RUN touch /home/app/say_anything/log/production.log
 RUN chown -R app /home/app/say_anything
 
