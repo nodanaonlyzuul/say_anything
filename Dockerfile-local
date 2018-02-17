@@ -1,0 +1,29 @@
+FROM 'ruby:2.4.3'
+
+# Set correct environment variables.
+ENV HOME /root
+
+# Text-to-speech stuff
+COPY ./docker_resources/debian-jessie-sources.list /etc/apt/sources.list.d/backports.list
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUN apt-get install -y libttspico-utils
+
+# Converting tools
+RUN apt-get install -y ffmpeg
+
+# Example usage: pico2wave -w=hello.wav "Hello my love, I heard a kiss from you"
+
+# https://github.com/phusion/passenger-docker/issues/195
+RUN apt-get install -y tzdata
+
+
+# Move in app and set permissions
+RUN mkdir -p /home/app/say_anything
+COPY Gemfile Gemfile.lock /home/app/say_anything/
+RUN cd /home/app/say_anything && gem install bundler && bundle install
+
+EXPOSE 3000
+WORKDIR /home/app/say_anything
+ENTRYPOINT ["bundle", "exec"]
+CMD ["rails", "server", "-b", "0.0.0.0"]

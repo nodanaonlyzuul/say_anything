@@ -5,8 +5,18 @@ An excuse to Dockerize a simple text-to-speech web site.
 WAV created by [pico2wave](http://manpages.ubuntu.com/manpages/trusty/man1/pico2wave.1.html),
 then turned into an MP3 with ffmpeg.
 
-## Building & Running Locally as a Docker Image
+## Building a Docker Image
+
+### For Local Development
 
 1.  `cp ./config/.env.example ./config/.env` and fill in values
-1.  `docker build .`
+1.  `docker build --no-cache -f Dockerfile-local .`
+1.  `docker run --env-file ./docker_resources/.env -p 3000:3000 -it -v $(pwd):/home/app/say_anything [IMAGE]`
+1.  Open a browser and go to http://localhost:3000
+
+### For Production
+
+1.  `cp ./config/.env.example ./config/.env` and fill in values
+1.  `docker build --no-cache -f Dockerfile .`
 1.  `docker run --env-file ./docker_resources/.env -p 80:80 [IMAGE]`
+1.  To test locally, open a browser and go to http://localhost.
