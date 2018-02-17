@@ -21,3 +21,4 @@
 .byebug_history
 
 /docker_resources/.env
+/public/sayings/*.wav
