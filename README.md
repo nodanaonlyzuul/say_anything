@@ -1,9 +1,11 @@
 # Say Anything
 
-An excuse to Dockerize a simple text-to-speech web site.
+An excuse to:
 
-WAV created by [pico2wave](http://manpages.ubuntu.com/manpages/trusty/man1/pico2wave.1.html),
-then turned into an MP3 with ffmpeg.
+* Dockerize a simple text-to-speech web site.
+* Use Docker in development without sacrificing hot reloading.
+
+WAVs are created by [pico2wave](http://manpages.ubuntu.com/manpages/trusty/man1/pico2wave.1.html), then turned into an MP3 with ffmpeg.
 
 ## Building a Docker Image
 
