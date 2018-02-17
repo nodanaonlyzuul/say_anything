@@ -1,11 +1,12 @@
 <div class="row">
-  <div class="col-sm">
+  <div class="col-sm" style="margin-left:15px;">
     <%= form_for @saying do |form| %>
       <div class="form-group">
-        <%= form.label :words %>
+        <%= form.label :words, "Type Something Here" %>
         <%= form.text_area :words, class: 'form-control' %>
       </div>
       <%= form.submit "Talk!", class: 'btn btn-success' %>
     <% end %>
   </div>
+  <div class="col-sm"></div>
 </div>
