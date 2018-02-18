@@ -12,8 +12,8 @@ WAVs are created by [pico2wave](http://manpages.ubuntu.com/manpages/trusty/man1/
 ### For Local Development
 
 1.  `cp ./config/.env.example ./config/.env` and fill in values
-1.  `docker build --no-cache -f Dockerfile-local .`
-1.  `docker run --env-file ./docker_resources/.env -p 3000:3000 -it -v $(pwd):/home/app/say_anything [IMAGE]`
+1.  `docker build --no-cache -f Dockerfile-local -t say_anything:local .`
+1.  `docker run --env-file ./docker_resources/.env -p 3000:3000 -i -v $(pwd):/home/app/say_anything -t say_anything:local`
 1.  Open a browser and go to http://localhost:3000
 
 ### For Production
