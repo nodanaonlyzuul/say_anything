@@ -11,6 +11,12 @@ WAVs are created by [pico2wave](http://manpages.ubuntu.com/manpages/trusty/man1/
 
 ### For Local Development
 
+Between ffmpeg and pico2wave, it's easier to run this in Linux.
+Running a container built from `Dockerfile-local` helps run/develop locally
+without sacrificing hot reload.
+
+It's inspired by [this codeship blog by Marko Locher](https://blog.codeship.com/running-rails-development-environment-docker/).
+
 1.  `cp ./config/.env.example ./config/.env` and fill in values
 1.  `docker build --no-cache -f Dockerfile-local -t say_anything:local .`
 1.  `docker run --env-file ./docker_resources/.env -p 3000:3000 -i -v $(pwd):/home/app/say_anything -t say_anything:local`
